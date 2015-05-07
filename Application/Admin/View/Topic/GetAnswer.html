@@ -1,0 +1,37 @@
+<form  id="AnswerForm" method="post" class="form-horizontal">
+    <div class="panel panel-color panel-warning" id="AnswerPanel">
+        <div class="panel-heading">
+                录入正确答案
+          </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <textarea id="ReplyContent" name="ReplyContent" class="form-control ckeditor" rows="6" cols="20"></textarea>
+            </li>
+            <li class="list-group-item">
+                答案显示方式：{$AnswerMode}
+            </li>
+
+            <li class="list-group-item text-right">
+                <input type="hidden" id="BoardId" name="BoardId" value="{$BoardId}">
+                <input type="hidden" id="TopicId" name="TopicId" value="{$TopicId}">
+                <input id="btnReply" type="button" value="提交回复" name="btnReply"  class="btn btn-primary" onclick="javascript:SaveAnswer();"/>
+                <input type="button" value=" 关 闭 " onclick="hide()" class="btn btn-info" />
+            </li>
+        </ul>
+    </div>
+</form>
+
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="__PUBLIC__/assets/js/wysihtml5/src/bootstrap-wysihtml5.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/uikit/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/uikit/uikit.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/uikit/css/addons/uikit.almost-flat.addons.min.css">
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/assets/js/wysihtml5/src/bootstrap-wysihtml5.js"></script>
+<script src="__PUBLIC__/assets/js/uikit/vendor/codemirror/codemirror.js"></script>
+<script src="__PUBLIC__/assets/js/uikit/vendor/marked.js"></script>
+<script src="__PUBLIC__/assets/js/uikit/js/uikit.min.js"></script>
+<script src="__PUBLIC__/assets/js/uikit/js/addons/htmleditor.min.js"></script>
+<script src="__PUBLIC__/assets/js/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/assets/js/ckeditor/adapters/jquery.js"></script>

@@ -1,0 +1,295 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <p class="navbar-text"><strong>主贴管理：</strong></p>
+        <ul class="nav navbar-nav">
+            <li><a  href="javascript:void(0)" onclick="SetTop()" id="Top">置顶</a></li>
+            <if condition="$data.isdigest eq 0">
+                <li><a href="#" onclick="javascript:SetDigest();" id="Degist">精华</a></li>
+                <else/>
+                <li><a href="#" onclick="javascript:SetCancelDigest();" id="Degist">取消精华</a></li>
+            </if>
+
+            <if condition="$data.islock eq 0">
+                <li><a href="#" onclick="javascript:SetLock();" id="Lock">锁定</a></li>
+            <else/>
+                <if condition="($data.topictype neq 1) OR ($data.isfinish neq 1)">
+                    <li> <a href="#" onclick="javascript:SetUnLock();" id="Lock">取消锁定</a></li>
+                </if>
+            </if>
+            <if condition="($data.topictype eq 1) AND ($data.isfinish neq 1)">
+                <li><a href="javascript:void(0)" onclick="LoadPage()" >录入正确答案</a></li>
+            </if>
+            </if>
+        </ul>
+    </div>
+</nav>
+<!--录入正确用-->
+<div id="Answer">
+</div>
+<!--录入正确用 end-->
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/assets/js/toastr/toastr.min.js"></script>
+
+<script type="text/javascript">
+    //显示置顶设置页面
+    function SetTop(){
+        if($('#TopPanel').val() == null) {
+            try {
+                $.ajax({
+                    type: "Get",
+                    url: "{:U('ListTop',array(boardId=>$data['boardid'],topicId=>$data['id']),'')}",
+                    async: false,
+                    success: function (msg) {
+                        $('#Answer').append(msg);
+                    }
+                });
+            }
+            catch (e) { }
+        }
+    }
+
+
+
+    //设置精华
+    function SetDigest()
+    {
+        if(confirm('确认要将此贴设置为精华么？'))
+        {
+            $.ajax({
+                url: "{:U('Topic/SetDigest',array(TopicId=> $data['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    SetDigestSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    //精华设置成功
+    function SetDigestSuccess(data) {
+        if (data == 0) {
+            var opts = {
+                "closeButton": false,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.success("设置精华成功！", "操作提示", opts);
+
+            $("#Degist").html("取消精华").attr('onclick','javascript:SetCancelDigest();');
+            $("#TopicTitle").prepend("<img id=\"DigestImg\" title=\"精华\" src=\"__ROOT__/Public/Images/star.gif\">");
+        }
+    }
+
+    //取消设置精华
+    function SetCancelDigest()
+    {
+        if(confirm('确认要将此贴取消精华么？'))
+        {
+            $.ajax({
+                url: "{:U('Topic/SetDigest',array(TopicId=> $data['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    CancelDigestSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    //取消精华设置成功
+    function CancelDigestSuccess(data) {
+        if (data == 0) {
+            var opts = {
+                "closeButton": false,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.success("取消精华成功！", "操作提示", opts);
+
+            $("#Degist").html("精华").attr('onclick','javascript:SetDigest();');
+            $("#DigestImg").remove();
+        }
+    }
+
+    //设置锁定
+    function SetLock()
+    {
+        if(confirm('确认要将此贴锁定么？锁定后帖子将无法回复。'))
+        {
+            $.ajax({
+                url: "{:U('Topic/SetLock',array(TopicId=> $data['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    SetLockSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    //锁定设置成功
+    function SetLockSuccess(data) {
+        if (data == 0) {
+            var opts = {
+                "closeButton": false,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.success("锁定成功！", "操作提示", opts);
+
+            $("#Lock").html("取消锁定").attr("onclick", "javascript:SetUnLock();");
+            $("#TopicTitle").prepend("<img id=\"LockImg\" title=\"锁定\" src=\"__ROOT__/Public/Images/ico_lock.gif\">");
+        }
+    }
+
+    //设置锁定
+    function SetUnLock() {
+        $.ajax({
+            url: "{:U('Topic/SetLock',array(TopicId=> $data['id']),'')}",
+            type: "PUT",
+            dataType: "text",
+            success: function (data) {
+                UnLockSuccess(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("status_" + XMLHttpRequest.status);
+                alert("readyState_" + XMLHttpRequest.readyState);
+                alert("textStatus_" + textStatus);
+            }
+        });
+    }
+
+    //取消锁定设置成功
+    function UnLockSuccess(data) {
+        if (data == 0) {
+            var opts = {
+                "closeButton": false,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.success("取消锁定成功！", "操作提示", opts);
+
+            $("#Lock").html("锁定").attr("onclick", "javascript:SetLock();");
+            $("#LockImg").remove();
+        }
+    }
+
+    /*以下是录入正确答案用*/
+    function hide() {
+        $('#Answer').empty();
+    }
+    //加载页面
+    function LoadPage() {
+        if($('#AnswerPanel').val() == null) {
+            try {
+                $.ajax({
+                    type: "Get",
+                    url: "{:U('Topic/GetAnswer',array(TopicId=>$data['id']),'')}",
+                    async: false,
+                    success: function (msg) {
+                        $('#Answer').append(msg);
+                    }
+                });
+            }
+            catch (e) {
+            }
+        }
+    }
+
+    //设置置顶
+    function SaveAnswer() {
+        $.ajax({
+            url: "{:U('Topic/GetAnswerSave','','')}",
+            type: "POST",
+            data: $.param($('#AnswerForm').serializeArray()),
+            dataType: "text",
+            success: function (data) {
+                OnSaveAnswerSuccess(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("status_" + XMLHttpRequest.status);
+                alert("readyState_" + XMLHttpRequest.readyState);
+                alert("textStatus_" + textStatus);
+            }
+        });
+    }
+
+    function OnSaveAnswerSuccess(data) {
+        if (data == 0) {
+            var opts = {
+                "closeButton": false,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.success("回复成功！", "操作提示", opts);
+            location.reload();
+        }
+    }
+</script>

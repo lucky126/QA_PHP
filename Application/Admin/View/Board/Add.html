@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form method="post" action="__URL__/add" class="form-horizontal" id="boardEdit">
+                    <div class="form-group">
+                        <label for="BoardName" class="col-sm-2 control-label">{$boardTypeName}名称：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="BoardName" name="BoardName" class="form-control" placeholder="请输入{$boardTypeName}名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ParentBoard" class="col-sm-2 control-label">所属版区：</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" id="ParentBoard">{$parentName}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BoardType" class="col-sm-2 control-label">版区类型：</label>
+                        <div class="col-sm-10">
+                            {$boardTypeHtml}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BoardMaster" class="col-sm-2 control-label">版主：</label>
+                        <div class="col-sm-10">
+                            <script type="text/javascript">
+                                jQuery(document).ready(function($)
+                                {
+                                    $("#BoardMasterList").select2({
+                                        placeholder: '请选择版主',
+                                        allowClear: true
+                                    }).on('select2-open', function()
+                                    {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                    $("#btnSave").click(function(){
+                                        var v =$("#BoardMasterList").select2("val");
+                                        $("#BoardMaster").val(v);
+                                        $("#boardEdit").submit();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="BoardMasterList" name="BoardMasterList" multiple>
+                                {$masterList}
+                            </select>
+                            <input type="hidden" id="BoardMaster" name="BoardMaster">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="IsPublic" class="col-sm-2 control-label">是否公共版区：</label>
+                        <div class="col-sm-10">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="IsPublic" name="IsPublic[]" value="1" class="cbr cbr-blue"> 是
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="hidden" id="ParentID" name="ParentID" value="{$parentid}">
+                            <input type="submit" id="btnSave" value="  保 存  " class="btn btn-primary" onclick="Save()" />
+                            <input type="button" value="  返 回  " class="btn btn-info" onclick="history.go(-1)" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="javascript">
+    function SetMaster(url, divId) {
+        try {
+            $.ajax({
+                type: "Get",
+                url: url,
+                async: false,
+                success: function (msg) {
+                    $("#" + divId + "").empty();
+                    $("#" + divId + "").append(msg);
+                }
+            });
+        }
+        catch (e) { }
+    }
+
+    $(function () {
+        SetMaster('{$master}', 'master');
+        SetMaster('{$allMaster}', 'allMaster');
+    });
+
+    function Save() {
+        var masters = "";
+        $("#master a").each(function () {
+            masters = masters + $(this).attr("value") + ",";
+        });
+        masters = masters.substr(0, masters.length - 1);
+        $("#boardmaster").attr('value', masters);
+    }
+</script>
+
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="__PUBLIC__/assets/js/select2/select2.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/multiselect/css/multi-select.css">
+
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/assets/js/select2/select2.min.js"></script>

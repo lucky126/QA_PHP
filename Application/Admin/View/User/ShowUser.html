@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p class="lead">{$data['loginname']} 的基本信息：</p>
+                <table  class="table table-bordered table-striped">
+                    <tr>
+                        <td class="warning  text-right">
+                            真实姓名：
+                        </td>
+                        <td>
+                            {$data['realname']}
+                        </td>
+                        <td class="warning text-right">
+                           昵称：
+                        </td>
+                        <td>
+                            {$data['nickname']}
+                        </td>
+                        <td class="warning text-right">
+                            性别：
+                        </td>
+                        <td>
+                            {$data['gender']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="warning text-right">
+                            用户类型：
+                        </td>
+                        <td>
+                            {$data['userlevel']}
+                        </td>
+                        <td class="warning text-right">
+                            Email：
+                        </td>
+                        <td>
+                            {$data['useremail']}
+                        </td>
+                        <td class="warning text-right">
+                            积分：
+                        </td>
+                        <td>
+                            {$data['grade']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="warning text-right">
+                            总贴数：
+                        </td>
+                        <td>
+                            {$data['topiccnt']}
+                        </td>
+                        <td class="warning text-right">
+                           发帖数：
+                        </td>
+                        <td>
+                            {$data['postcnt']}
+                        </td>
+                        <td class="warning text-right">
+                            被删帖数：
+                        </td>
+                        <td>
+                            {$data['delcnt']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="warning text-right">
+                            登录次数：
+                        </td>
+                        <td>
+                            {$data['logincnt']}
+                        </td>
+                        <td class="warning text-right">
+                            加入时间：
+                        </td>
+                        <td>
+                            {$data['addtime']}
+                        </td>
+                        <td class="warning text-right">
+                            最后登录时间：
+                        </td>
+                        <td>
+                            {$data['lastlogintime']}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <input id="btnClose" type="button" value=" 返 回 " name="btnClose" onclick="javascript:history.go(-1);" class="btn btn-info" />
+    </div>
+</div>

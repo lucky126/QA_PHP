@@ -1,0 +1,84 @@
+<table cellpadding="4" cellspacing="1" border="0" class="table table-bordered table-striped table-hover" id="QAList">
+    <thead>
+        <th>删除</th>
+        <th>标题</th>
+        <th>发帖人</th>
+        <th>回复/点击</th>
+        <th>状态</th>
+        <th>发起时间</th>
+    </thead>
+
+    <form action="{:U('Topic/Delete',array(bid => $bid),'')}" method="Post">
+    <tbody>
+    <foreach name="topics" item="p">
+        <tr onmouseout="this.style.backgroundColor='#FFFFFF'" onmousemove="this.style.backgroundColor='#F7FAF8'">
+            <td class="textCenter">
+                <input type="checkbox" id="del" name="del_{$p.id}" value="{$p.id}">
+            </td>
+            <td>
+                {$p.getLock}
+                {$p.getTopLevel}
+                {$p.getDigest}
+                <a href="{:U('Topic/index',array(id => $p['id'],bid => $p['boardid']),'')}" title="点击查看详细">{$p.title}</a>
+            </td>
+            <td class="textCenter">
+                {$p.postusername}
+            </td>
+            <td class="textCenter">
+                <span class="badge badge-red">{$p.child}</span>  <span class="badge badge-default">{$p.hits}</span>
+            </td>
+            <td class="textCenter">
+                {$p.getTopicFinish}
+            </td>
+            <td class="textCenter">
+                {$p.posttime}
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="6">
+            <input type="checkbox" id="AllCheck" name="AllCheck" onclick="AllSelect()"> 全选
+            <input type="submit" value=" 删 除 " class="btn btn-danger"  onclick="return CheckDel()"/>
+        </td>
+    </tr>
+    </tfoot>
+    </form>
+
+</table>
+<div class="row">{$page}</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('input[id="del"]').each(function () {
+            $(this).prop('checked', false)
+        });
+        $('input[id="del"]').bind("click", function () {
+            if ($(this).prop('checked') == false) {
+                $('#AllCheck').prop('checked', false);
+            }
+        });
+    });
+    function AllSelect() {
+        $('input[id="del"]').each(function () {
+            $(this).prop('checked', $('#AllCheck').prop('checked'))
+        });
+    }
+    function CheckDel() {
+        var hasSelect = false;
+        $('input[id="del"]').each(function () {
+            if ($(this).prop('checked'))
+                hasSelect = true;
+        });
+
+        if (!hasSelect) {
+            alert("请选择需要删除的帖子");
+            return false;
+        }
+        else {
+            return confirm("你确认要删除所选帖子么？");
+        }
+    }
+
+</script>

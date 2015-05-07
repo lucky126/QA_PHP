@@ -1,0 +1,240 @@
+[ 2015-04-23T11:36:08+08:00 ] 127.0.0.1 /BBS/
+[ 基本 ]
+请求信息:2015-04-23 11:36:03 HTTP/1.1 GET : /BBS/
+运行时间:4.0512s ( Load:0.9491s Init:0.2600s Exec:1.9821s Template:0.8600s )
+吞吐率:0.25req/s
+内存开销:1,900.30 kb
+查询信息:4 queries 0 writes 
+文件加载:37
+缓存信息:0 gets 0 writes 
+配置加载:133
+会话信息:SESSION_ID=ldftui9qblt1t8e1lucdtit252
+
+[ 文件 ]
+D:\wamp\www\BBS\index.php ( 1.60 KB )
+D:\wamp\www\BBS\ThinkPHP\ThinkPHP.php ( 4.71 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Think.class.php ( 12.32 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Storage.class.php ( 1.38 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Storage\Driver\File.class.php ( 3.56 KB )
+D:\wamp\www\BBS\ThinkPHP\Mode\common.php ( 2.82 KB )
+D:\wamp\www\BBS\ThinkPHP\Common\functions.php ( 52.55 KB )
+D:\wamp\www\BBS\Common\Common\function.php ( 2.45 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Hook.class.php ( 4.02 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\App.class.php ( 13.46 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Dispatcher.class.php ( 15.03 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Route.class.php ( 13.38 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Controller.class.php ( 10.95 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\View.class.php ( 7.96 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\BuildLiteBehavior.class.php ( 3.69 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ParseTemplateBehavior.class.php ( 3.89 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ContentReplaceBehavior.class.php ( 1.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Conf\convention.php ( 11.18 KB )
+D:\wamp\www\BBS\Common\Conf\config.php ( 0.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Lang\zh-cn.php ( 2.57 KB )
+D:\wamp\www\BBS\ThinkPHP\Conf\debug.php ( 1.51 KB )
+D:\wamp\www\BBS\Common\Conf\globalConst.php ( 0.75 KB )
+D:\wamp\www\BBS\Common\Conf\systemConfig.php ( 0.35 KB )
+D:\wamp\www\BBS\Application\Home\Conf\config.php ( 0.09 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ReadHtmlCacheBehavior.class.php ( 5.62 KB )
+D:\wamp\www\BBS\Application\Home\Controller\IndexController.class.php ( 2.50 KB )
+D:\wamp\www\BBS\Application\Home\Model\BoardModel.class.php ( 1.90 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Model.class.php ( 66.52 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db.class.php ( 5.68 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ( 7.06 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db\Driver.class.php ( 41.04 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template.class.php ( 28.35 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template\TagLib\Cx.class.php ( 22.62 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template\TagLib.class.php ( 9.19 KB )
+D:\wamp\www\BBS\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php ( 5.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\WriteHtmlCacheBehavior.class.php ( 1.43 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ShowPageTraceBehavior.class.php ( 5.27 KB )
+
+[ 流程 ]
+[ app_init ] --START--
+Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+[ app_init ] --END-- [ RunTime:0.103006s ]
+[ app_begin ] --START--
+Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.019001s ]
+[ app_begin ] --END-- [ RunTime:0.019001s ]
+[ view_parse ] --START--
+[ template_filter ] --START--
+Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+[ template_filter ] --END-- [ RunTime:0.000000s ]
+Run Behavior\ParseTemplateBehavior [ RunTime:0.639037s ]
+[ view_parse ] --END-- [ RunTime:0.640037s ]
+[ view_filter ] --START--
+Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.061003s ]
+[ view_filter ] --END-- [ RunTime:0.061003s ]
+[ app_end ] --START--
+
+[ 错误 ]
+
+[ SQL ]
+SHOW COLUMNS FROM `bbs_board` [ RunTime:0.5300s ]
+SHOW COLUMNS FROM `bbs_board` [ RunTime:0.1000s ]
+SELECT * FROM `bbs_board` WHERE `ParentID` = 0 AND ( `IsPublic` = 1  ) ORDER BY BoardOrder  [ RunTime:0.2730s ]
+SELECT * FROM `bbs_board` WHERE `ParentID` = '8' ORDER BY BoardOrder  [ RunTime:0.0090s ]
+
+[ 调试 ]
+
+
+[ 2015-04-23T11:36:09+08:00 ] 127.0.0.1 /BBS/
+[ 基本 ]
+请求信息:2015-04-23 11:36:07 HTTP/1.1 GET : /BBS/
+运行时间:0.6300s ( Load:0.4100s Init:0.0160s Exec:0.1060s Template:0.0980s )
+吞吐率:1.59req/s
+内存开销:1,900.30 kb
+查询信息:4 queries 0 writes 
+文件加载:37
+缓存信息:0 gets 0 writes 
+配置加载:133
+会话信息:SESSION_ID=b3si1bgvvqs5sjq4qr02pg63u3
+
+[ 文件 ]
+D:\wamp\www\BBS\index.php ( 1.60 KB )
+D:\wamp\www\BBS\ThinkPHP\ThinkPHP.php ( 4.71 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Think.class.php ( 12.32 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Storage.class.php ( 1.38 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Storage\Driver\File.class.php ( 3.56 KB )
+D:\wamp\www\BBS\ThinkPHP\Mode\common.php ( 2.82 KB )
+D:\wamp\www\BBS\ThinkPHP\Common\functions.php ( 52.55 KB )
+D:\wamp\www\BBS\Common\Common\function.php ( 2.45 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Hook.class.php ( 4.02 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\App.class.php ( 13.46 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Dispatcher.class.php ( 15.03 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Route.class.php ( 13.38 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Controller.class.php ( 10.95 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\View.class.php ( 7.96 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\BuildLiteBehavior.class.php ( 3.69 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ParseTemplateBehavior.class.php ( 3.89 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ContentReplaceBehavior.class.php ( 1.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Conf\convention.php ( 11.18 KB )
+D:\wamp\www\BBS\Common\Conf\config.php ( 0.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Lang\zh-cn.php ( 2.57 KB )
+D:\wamp\www\BBS\ThinkPHP\Conf\debug.php ( 1.51 KB )
+D:\wamp\www\BBS\Common\Conf\globalConst.php ( 0.75 KB )
+D:\wamp\www\BBS\Common\Conf\systemConfig.php ( 0.35 KB )
+D:\wamp\www\BBS\Application\Home\Conf\config.php ( 0.09 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ReadHtmlCacheBehavior.class.php ( 5.62 KB )
+D:\wamp\www\BBS\Application\Home\Controller\IndexController.class.php ( 2.50 KB )
+D:\wamp\www\BBS\Application\Home\Model\BoardModel.class.php ( 1.90 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Model.class.php ( 66.52 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db.class.php ( 5.68 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ( 7.06 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db\Driver.class.php ( 41.04 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template.class.php ( 28.35 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template\TagLib\Cx.class.php ( 22.62 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template\TagLib.class.php ( 9.19 KB )
+D:\wamp\www\BBS\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php ( 5.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\WriteHtmlCacheBehavior.class.php ( 1.43 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ShowPageTraceBehavior.class.php ( 5.27 KB )
+
+[ 流程 ]
+[ app_init ] --START--
+Run Behavior\BuildLiteBehavior [ RunTime:0.009000s ]
+[ app_init ] --END-- [ RunTime:0.009000s ]
+[ app_begin ] --START--
+Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ view_parse ] --START--
+[ template_filter ] --START--
+Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+[ template_filter ] --END-- [ RunTime:0.000000s ]
+Run Behavior\ParseTemplateBehavior [ RunTime:0.068003s ]
+[ view_parse ] --END-- [ RunTime:0.068003s ]
+[ view_filter ] --START--
+Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+[ view_filter ] --END-- [ RunTime:0.001001s ]
+[ app_end ] --START--
+
+[ 错误 ]
+
+[ SQL ]
+SHOW COLUMNS FROM `bbs_board` [ RunTime:0.0160s ]
+SHOW COLUMNS FROM `bbs_board` [ RunTime:0.0030s ]
+SELECT * FROM `bbs_board` WHERE `ParentID` = 0 AND ( `IsPublic` = 1  ) ORDER BY BoardOrder  [ RunTime:0.0020s ]
+SELECT * FROM `bbs_board` WHERE `ParentID` = '8' ORDER BY BoardOrder  [ RunTime:0.0010s ]
+
+[ 调试 ]
+
+
+[ 2015-04-23T11:36:12+08:00 ] 127.0.0.1 /BBS/
+[ 基本 ]
+请求信息:2015-04-23 11:36:12 HTTP/1.1 GET : /BBS/
+运行时间:0.1660s ( Load:0.0150s Init:0.0060s Exec:0.1030s Template:0.0420s )
+吞吐率:6.02req/s
+内存开销:1,900.30 kb
+查询信息:4 queries 0 writes 
+文件加载:37
+缓存信息:0 gets 0 writes 
+配置加载:133
+会话信息:SESSION_ID=08t39p6ernslrk969ibqliq4r2
+
+[ 文件 ]
+D:\wamp\www\BBS\index.php ( 1.60 KB )
+D:\wamp\www\BBS\ThinkPHP\ThinkPHP.php ( 4.71 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Think.class.php ( 12.32 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Storage.class.php ( 1.38 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Storage\Driver\File.class.php ( 3.56 KB )
+D:\wamp\www\BBS\ThinkPHP\Mode\common.php ( 2.82 KB )
+D:\wamp\www\BBS\ThinkPHP\Common\functions.php ( 52.55 KB )
+D:\wamp\www\BBS\Common\Common\function.php ( 2.45 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Hook.class.php ( 4.02 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\App.class.php ( 13.46 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Dispatcher.class.php ( 15.03 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Route.class.php ( 13.38 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Controller.class.php ( 10.95 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\View.class.php ( 7.96 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\BuildLiteBehavior.class.php ( 3.69 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ParseTemplateBehavior.class.php ( 3.89 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ContentReplaceBehavior.class.php ( 1.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Conf\convention.php ( 11.18 KB )
+D:\wamp\www\BBS\Common\Conf\config.php ( 0.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Lang\zh-cn.php ( 2.57 KB )
+D:\wamp\www\BBS\ThinkPHP\Conf\debug.php ( 1.51 KB )
+D:\wamp\www\BBS\Common\Conf\globalConst.php ( 0.75 KB )
+D:\wamp\www\BBS\Common\Conf\systemConfig.php ( 0.35 KB )
+D:\wamp\www\BBS\Application\Home\Conf\config.php ( 0.09 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ReadHtmlCacheBehavior.class.php ( 5.62 KB )
+D:\wamp\www\BBS\Application\Home\Controller\IndexController.class.php ( 2.50 KB )
+D:\wamp\www\BBS\Application\Home\Model\BoardModel.class.php ( 1.90 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Model.class.php ( 66.52 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db.class.php ( 5.68 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ( 7.06 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Db\Driver.class.php ( 41.04 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template.class.php ( 28.35 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template\TagLib\Cx.class.php ( 22.62 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Think\Template\TagLib.class.php ( 9.19 KB )
+D:\wamp\www\BBS\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php ( 5.91 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\WriteHtmlCacheBehavior.class.php ( 1.43 KB )
+D:\wamp\www\BBS\ThinkPHP\Library\Behavior\ShowPageTraceBehavior.class.php ( 5.27 KB )
+
+[ 流程 ]
+[ app_init ] --START--
+Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+[ app_init ] --END-- [ RunTime:0.000000s ]
+[ app_begin ] --START--
+Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+[ app_begin ] --END-- [ RunTime:0.001000s ]
+[ view_parse ] --START--
+[ template_filter ] --START--
+Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+[ template_filter ] --END-- [ RunTime:0.000000s ]
+Run Behavior\ParseTemplateBehavior [ RunTime:0.037002s ]
+[ view_parse ] --END-- [ RunTime:0.038002s ]
+[ view_filter ] --START--
+Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+[ view_filter ] --END-- [ RunTime:0.000000s ]
+[ app_end ] --START--
+
+[ 错误 ]
+
+[ SQL ]
+SHOW COLUMNS FROM `bbs_board` [ RunTime:0.0070s ]
+SHOW COLUMNS FROM `bbs_board` [ RunTime:0.0050s ]
+SELECT * FROM `bbs_board` WHERE `ParentID` = 0 AND ( `IsPublic` = 1  ) ORDER BY BoardOrder  [ RunTime:0.0020s ]
+SELECT * FROM `bbs_board` WHERE `ParentID` = '8' ORDER BY BoardOrder  [ RunTime:0.0030s ]
+
+[ 调试 ]
+
+

@@ -1,0 +1,157 @@
+<div class="clearfix bg-muted">
+    <strong>帖子管理：</strong><span>
+    <if condition="$data.topictype eq 1">
+        <if condition="$bbss['HasAnswer'] eq 0">
+            <a href="#"  onclick="javascript:SetAnswer();" id="SetAnswer">设置为正确答案</a>
+            <else/>
+            <a href="#"  onclick="javascript:ChangeAnswer();" id="ChangeAnswer">修改为正确答案</a>
+        </if>
+    </if>
+    </span><span>
+        <if condition="$data.display eq 0">
+            <a href="#"  onclick="javascript:SetHidden();" id="Hidden">隐藏</a>
+        <else/>
+            <a href="#" onclick="javascript:SetUnHidden();" id="Hidden">取消隐藏</a>
+        </if>
+    </span><span>
+        <a href="#" onclick="javascript:Delete();" id="del">删除</a>
+    </span>
+</div>
+<script type="text/javascript">
+    //设置为正确答案
+    function SetAnswer()
+    {
+        if(confirm('确认要将所选回复设置为正确答案么？'))
+        {
+            $.ajax({
+                url: "{:U('Topicinfo/SetAnswer',array(bbsId=> $vo['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    SetAnswerSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    function SetAnswerSuccess(data) {
+        if (data == 0) {
+            ZENG.msgbox.show("答案设置成功", 4, 2000);
+            location.reload();
+        }
+    }
+
+    //修改为正确答案
+    function ChangeAnswer()
+    {
+        if(confirm('确认要将所选回复修改设置为正确答案么？若已经回答过正确答案，则会删除原先答案回帖。'))
+        {
+            $.ajax({
+                url: "{:U('Topicinfo/ChangeAnswer',array(bbsId=> $vo['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    ChangeAnswerSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    function ChangeAnswerSuccess(data) {
+        if (data == 0) {
+            ZENG.msgbox.show("修改设置答案成功", 4, 2000);
+            location.reload();
+        }
+    }
+
+
+    //隐藏
+    function SetHidden()
+    {
+        if(confirm('确认要隐藏该贴么？隐藏后除发帖人外其他人将无法看到回复内容。'))
+        {
+            $.ajax({
+                url: "{:U('Topicinfo/SetHidden',array(bbsId=> $vo['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    SetHiddenSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    function SetHiddenSuccess(data) {
+        if (data == 0) {
+            ZENG.msgbox.show("隐藏成功", 4, 2000);
+            $("#Hidden").html("取消隐藏").attr('onclick','javascript:SetUnHidden();');
+        }
+    }
+
+    //取消隐藏
+    function SetUnHidden() {
+        $.ajax({
+            url: "{:U('Topicinfo/SetHidden',array(bbsId=> $vo['id']),'')}",
+            type: "PUT",
+            dataType: "text",
+            success: function (data) {
+                CancelHiddenSuccess(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("status_" + XMLHttpRequest.status);
+                alert("readyState_" + XMLHttpRequest.readyState);
+                alert("textStatus_" + textStatus);
+            }
+        });
+    }
+
+    function CancelHiddenSuccess(data) {
+        if (data == 0) {
+            ZENG.msgbox.show("取消隐藏成功", 4, 2000);
+            $("#Hidden").html("隐藏").attr('onclick','javascript:SetHidden();');
+        }
+    }
+
+    //删除
+    function Delete()
+    {
+        if(confirm('确认要删除此贴么？一旦删除将无法回复。'))
+        {
+            $.ajax({
+                url: "{:U('Topicinfo/Delete',array(bbsId=> $vo['id']),'')}",
+                type: "PUT",
+                dataType: "text",
+                success: function(data){
+                    DeleteSuccess(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status_" + XMLHttpRequest.status);
+                    alert("readyState_" + XMLHttpRequest.readyState);
+                    alert("textStatus_" + textStatus);
+                }
+            });
+        }
+    }
+
+    function DeleteSuccess(data) {
+        if (data == 0) {
+            ZENG.msgbox.show("删除成功", 4, 2000);
+            location.reload();
+        }
+    }
+</script>

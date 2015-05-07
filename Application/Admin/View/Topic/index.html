@@ -1,0 +1,12 @@
+<!--主贴管理-->
+<include file="Topic/TopicManager" />
+
+<if condition="$data.topictype eq 1">
+    <include file="Topicinfo/QAList" />
+<else/>
+    <include file="Topicinfo/DiscussList" />
+</if>
+
+<div>
+    <a href="{:U('Board/Board',array(id=>$bid),'')}" class="btn btn-primary">返回主贴列表</a>
+</div>

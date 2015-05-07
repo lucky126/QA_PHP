@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs nav-tabs-justified">
+    <foreach name="typeNameDesc" item="v" key="k">
+        <if condition="$qaType eq $k">
+            <li class="active"><a href="#">{$v}</a></li>
+            <else/>
+            <li><a href="{:U('Board',array('qaType' => $k,'id' => $bid),'')}">{$v}</a></li>
+        </if>
+    </foreach>
+</ul>

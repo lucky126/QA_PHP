@@ -1,0 +1,113 @@
+           <div class="row">
+                <div class="col-sm-3">
+
+                    <div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="0" data-to="{$TotalBoard}" data-duration="1" data-easing="true">
+                        <div class="xe-icon">
+                            <i class="linecons-cog"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">1</strong>
+                            <span>总版区数</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="{$TotalPost}" data-duration="1">
+                        <div class="xe-icon">
+                            <i class="linecons-desktop"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">1</strong>
+                            <span>总帖子数</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <div class="xe-widget xe-counter xe-counter-blue" data-count=".num" data-from="0" data-to="{$TotalUser}" data-duration="1" data-easing="false">
+                        <div class="xe-icon">
+                            <i class="linecons-user"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">1</strong>
+                            <span>总用户数</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function($)
+                        {
+                            var dataSource = [
+                                {$chartValue}
+                            ];
+
+                            $("#post-reply-chart").dxChart({
+                                dataSource: dataSource,
+                                commonSeriesSettings: {
+                                    argumentField: "date",
+                                    point: { visible: true, size: 5, hoverStyle: {size: 7, border: 0, color: 'inherit'} }
+                                },
+                                series: [
+                                    { valueField: "post", name: "发帖数", color: "#40bbea" },
+                                    { valueField: "reply", name: "回帖数", color: "#cc3f44" },
+                                ],
+                                argumentAxis:{
+                                    valueType: 'datetime',
+                                    grid:{
+                                        visible: true
+                                    }
+                                },
+                                valueAxis:{
+                                    valueType: 'numeric',
+                                    tickInterval: 1
+                                },
+                                tooltip:{
+                                    enabled: true
+                                },
+                                title: "发帖回帖情况图",
+                                legend: {
+                                    verticalAlignment: "bottom",
+                                    horizontalAlignment: "center"
+                                },
+                                commonPaneSettings: {
+                                    border:{
+                                        visible: true,
+                                        right: false
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+
+                    <div class="chart-item-bg">
+                        <div id="post-reply-chart" style="height: 400px;"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Imported styles on this page -->
+            <link rel="stylesheet" href="__PUBLIC__/assets/css/fonts/meteocons/css/meteocons.css">
+
+            <!-- Imported scripts on this page -->
+            <script src="__PUBLIC__/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+            <script src="__PUBLIC__/assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
+            <script src="__PUBLIC__/assets/js/xenon-widgets.js"></script>
+
+            <!-- Imported scripts on this page -->
+            <script src="__PUBLIC__/assets/js/xenon-widgets.js"></script>
+            <script src="__PUBLIC__/assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+            <script src="__PUBLIC__/assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+            <script src="__PUBLIC__/assets/js/toastr/toastr.min.js"></script>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="互动交流系统 管理平台" />
+    <meta name="author" content="" />
+
+    <title>互动交流系统管理平台</title>
+
+    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-core.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-forms.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-components.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/css/custom.css">
+
+    <script src="__PUBLIC__/assets/js/jquery-1.11.1.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body class="page-body skin-purple">
+
+<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->
+
+    <div class="navbar-inner">
+
+        <!-- Navbar Brand -->
+        <div class="navbar-brand">
+            <h1><a href="{:U('/Admin/','','')}" class="logo">互动交流系统管理平台</a></h1>
+        </div>
+
+        <!-- Mobile Toggles Links -->
+        <div class="nav navbar-mobile">
+
+            <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+            <div class="mobile-menu-toggle">
+                <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+                <a href="#" data-toggle="settings-pane" data-animate="true">
+                    <i class="linecons-cog"></i>
+                </a>
+
+                <a href="#" data-toggle="user-info-menu-horizontal">
+                    <i class="fa-bell-o"></i>
+                    <span class="badge badge-success">7</span>
+                </a>
+
+                <!-- data-toggle="mobile-menu-horizontal" will show horizontal menu links only -->
+                <!-- data-toggle="mobile-menu" will show sidebar menu links only -->
+                <!-- data-toggle="mobile-menu-both" will show sidebar and horizontal menu links -->
+                <a href="#" data-toggle="mobile-menu-horizontal">
+                    <i class="fa-bars"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="navbar-mobile-clear"></div>
+
+
+        <!-- notifications and other links -->
+        <ul class="nav nav-userinfo navbar-right">
+
+            <li class="dropdown user-profile">
+                <a href="#" data-toggle="dropdown">
+                    <img src="__PUBLIC__/assets/images/user-1.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+						<span>
+							{$nickname}
+							<i class="fa-angle-down"></i>
+						</span>
+                </a>
+
+                <ul class="dropdown-menu user-profile-menu list-unstyled">
+                    <li>
+                        <a href="{:U('User/ChangePwd','','')}">
+                            <i class="fa-wrench"></i>
+                            修改密码
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('User/ShowUser',array('id' => session('Admin')['UserID']),'')}">
+                            <i class="fa-user"></i>
+                            个人信息
+                        </a>
+                    </li>
+                    <li class="last">
+                        <a href="{:U('Common/Logout','','')}">
+                            <i class="fa-lock"></i>
+                            注销登录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+    <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+    <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+    <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+    <div class="sidebar-menu toggle-others fixed">
+
+        <div class="sidebar-menu-inner">
+
+            <ul id="main-menu" class="main-menu">
+                <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+                <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                <include file="Common/menu" />
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <div class="page-title">
+
+            <div class="title-env">
+                <h1 class="title">{$title|default="主页面"}</h1>
+                <p class="description">{$titleDesc}</p>
+            </div>
+
+            <div class="breadcrumb-env">
+<!--
+                <ol class="breadcrumb bc-1">
+                    <li>
+                        <a href="{:U('/Admin/','','')}"><i class="fa-home"></i>首页</a>
+                    </li>
+                    <li>
+                        <a href="#">栏目</a>
+                    </li>
+                    <li class="active">
+                        <strong>项目</strong>
+                    </li>
+                </ol>
+-->
+            </div>
+        </div>
+
+        {__CONTENT__}
+        <!-- Main Footer -->
+        <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+        <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+        <!-- Or class "fixed" to  always fix the footer to the end of page -->
+        <footer class="main-footer sticky footer-type-1">
+
+            <div class="footer-inner">
+
+                <!-- Add your copyright text here -->
+                <div class="footer-text">
+                    &copy; 2015
+                    <strong>luckynet</strong>
+                </div>
+
+
+                <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+                <div class="go-up">
+                    <a href="#" rel="go-top">
+                        <i class="fa-angle-up"></i>
+                    </a>
+                </div>
+
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+<!-- Bottom Scripts -->
+<script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/assets/js/TweenMax.min.js"></script>
+<script src="__PUBLIC__/assets/js/resizeable.js"></script>
+<script src="__PUBLIC__/assets/js/joinable.js"></script>
+<script src="__PUBLIC__/assets/js/xenon-api.js"></script>
+<script src="__PUBLIC__/assets/js/xenon-toggles.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="__PUBLIC__/assets/js/xenon-custom.js"></script>
+
+</body>
+</html>

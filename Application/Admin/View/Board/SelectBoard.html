@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">选择所要维护的版区</h3>
+            </div>
+
+            <div class="panel-body">
+
+                    <form action="{:U('Board/SelectBoard','','')}" method="post" class="form">
+                        <script type="text/javascript">
+                            jQuery(document).ready(function($)
+                            {
+                                $("#BoardId").selectBoxIt().on('open', function()
+                                {
+                                    // Adding Custom Scrollbar
+                                    $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                });
+                            });
+                        </script>
+                        <div class="form-group">
+                            {$BoardList}
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="  确 定 " class="btn btn-primary" />
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="__PUBLIC__/assets/js/daterangepicker/daterangepicker-bs3.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/select2/select2.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/multiselect/css/multi-select.css">
+
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/assets/js/daterangepicker/daterangepicker.js"></script>
+<script src="__PUBLIC__/assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="__PUBLIC__/assets/js/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/assets/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="__PUBLIC__/assets/js/select2/select2.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="__PUBLIC__/assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="__PUBLIC__/assets/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="__PUBLIC__/assets/js/typeahead.bundle.js"></script>
+<script src="__PUBLIC__/assets/js/handlebars.min.js"></script>
+<script src="__PUBLIC__/assets/js/multiselect/js/jquery.multi-select.js"></script>

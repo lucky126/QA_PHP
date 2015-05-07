@@ -1,0 +1,27 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="clearfix">
+            <if condition="$data.boardtype eq 1">
+                {//QA 启用左右结构}
+                <include file="Common/QATypeNav" />
+                <div class="panel panel-default">
+                    <div class="table-responsive clearfix">
+                        <include file="Topic/QAList" />
+                    </div>
+                </div>
+            <else/>
+                {//论坛不启用左右结构}
+                <div class="panel panel-default">
+                    <div class="table-responsive clearfix">
+                        <include file="Topic/DiscussList" />
+                    </div>
+                </div>
+            </if>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <a href="{:U('Board/SelectBoard','','')}" class="btn btn-primary">返回版区选择列表</a>
+    </div>
+</div>

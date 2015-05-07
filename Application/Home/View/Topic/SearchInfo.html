@@ -1,0 +1,64 @@
+<!--发帖搜索-->
+<include file="Common/topBanner" />
+<!--导航-->
+<div class="row">
+    <include file="Common/Nav" />
+    <div class="col-lg-4 breadcrumb ">&nbsp;</div>
+</div>
+<!--高级搜索-->
+<form action="{:U('Topic/SearchResult','','')}" method="post" class="form-horizontal">
+
+<div class="panel panel-color panel-blue">
+    <div class="panel-heading">
+        高级搜索
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="SearchContext" class="col-sm-2 control-label">搜索内容：</label>
+            <div class="col-sm-6">
+                <input type="text" id="SearchContext" name="SearchContext" class="form-control" placeholder="请输入用户名">
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="SearchScope" class="col-sm-2 control-label">搜索范围：</label>
+            <div class="col-sm-6">
+                {$SearchScopeHtml}
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="SearchType" class="col-sm-2 control-label">搜索类型：</label>
+            <div class="col-sm-6">
+                {$SearchTypeHtml}
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="PostTime" class="col-sm-2 control-label">发帖时间：</label>
+            <div class="col-sm-6">
+                {$PostTimeHtml}
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" id="BoardId" name="BoardId" value="{$bid}">
+                <input type="submit" value=" 搜 索 " class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>

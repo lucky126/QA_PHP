@@ -1,0 +1,47 @@
+<form id='SetTopForm' type='post'>
+    <div class="panel panel-color panel-red" id="TopPanel">
+        <div class="panel-heading">
+            置顶设置
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function($)
+            {
+                $("#TopLevel").selectBoxIt().on('open', function()
+                {
+                    // Adding Custom Scrollbar
+                    $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                });
+            });
+        </script>
+        <div class="panel-body">
+            数字越高，置顶越靠前。<br />
+            若已设置过该等级，重复选择该等级，将覆盖原先设置。即同一等级只能存在一个帖子。<p></p>
+            <hr>
+            <div class="col-xs-2 text-right">置顶等级：</div>
+            <div class="col-xs-2 text-left">{$levelHtml}</div>
+            <div class="col-xs-8">
+                <input type="hidden" id="TopicId" name="TopicId" value="{$topicId}">
+                <input type="button" value="确定" class="btn btn-primary" onclick="javascript:SaveTop();"/>
+                <input type="button" value=" 关 闭 " onclick="$('#Answer').empty();" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="__PUBLIC__/assets/js/daterangepicker/daterangepicker-bs3.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/select2/select2.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="__PUBLIC__/assets/js/multiselect/css/multi-select.css">
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/assets/js/daterangepicker/daterangepicker.js"></script>
+<script src="__PUBLIC__/assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="__PUBLIC__/assets/js/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/assets/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="__PUBLIC__/assets/js/select2/select2.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="__PUBLIC__/assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="__PUBLIC__/assets/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="__PUBLIC__/assets/js/typeahead.bundle.js"></script>
+<script src="__PUBLIC__/assets/js/handlebars.min.js"></script>
+<script src="__PUBLIC__/assets/js/multiselect/js/jquery.multi-select.js"></script>

@@ -1,0 +1,27 @@
+<div class="row">&nbsp;</div>
+
+<ol class="breadcrumb bc-1 col-lg-8">
+    您的位置：
+    <li>
+        <i class="fa-home"></i>
+        <a href="{:U('/','','')}">首页</a>
+    </li>
+
+    <foreach name="nav['Boards']" item="b">
+        <li>
+            <a href="{:U('/Home/Index/Board',array('id'=>$b['id']),'')}">{$b.boardname}</a>
+        </li>
+    </foreach>
+
+    <if condition="$nav.Topic neq NULL">
+        <li>
+            <a href="{:U('/Home/Topic/Index',array('id'=>$nav['Topic']['id'],'bid'=>$nav['Topic']['boardid']),'')}">{$nav['Topic']['title']}</a>
+        </li>
+    </if>
+
+    <if condition="$nav.LastNav neq ''">
+        <li class="active">
+            {$nav['LastNav']}
+        </li>
+    </if>
+</ol>

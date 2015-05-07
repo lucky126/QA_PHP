@@ -1,0 +1,24 @@
+<div class="row">&nbsp;</div>
+<div class="SearchBlock row">
+    <div class="col-xs-12 col-md-11">
+        <form action="{:U('Topic/SearchResult','','')}" method="post">
+        <div class="col-xs-10 col-md-10">
+            <div class="input-group">
+                <input type="text" id="SearchContext" name="SearchContext" class="form-control no-right-border form-focus-purple" placeholder="请输入要查询的内容">
+                <input type="hidden" id="BoardId" name="BoardId" value="{$bid}">
+                <span class="input-group-btn">
+                    <input type="submit" value=" 搜 索 " class="btn btn-purple" />
+                </span>
+            </div>
+        </form>
+        </div>
+        <div class="col-xs-2  col-md-1">
+            <a href="{:U('Topic/SearchInfo',array('BoardId' => $bid),'')}" class="btn btn-blue">高级搜索</a>
+        </div>
+    </div>
+    <if condition="($bid gt 0) AND session('?User')">
+        <div class="col-xs-2 col-md-1">
+            <a href="{:U('Topic/NewTopic',array('boardid' => $bid),'')}" class="btn btn-info">发帖</a>
+        </div>
+    </if>
+</div>

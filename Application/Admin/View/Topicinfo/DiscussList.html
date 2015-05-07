@@ -1,0 +1,43 @@
+<php>if($bbss != NULL){</php>
+<table cellpadding="4" cellspacing="1" border="0" class="table table-striped">
+    <thead>
+    <td colspan="2" class="info">
+                    <span id="TopicTitle" class="DiscussTopicTitle">
+                        {$data.getLock}
+                        {$data.getTopLevel}
+                        {$data.getDigest}
+                        {$data.title}</span>
+    </td>
+    </thead>
+    <tbody>
+    <foreach name="bbss" item="vo">
+        <tr>
+            <td class="active">
+                <span class="text-center"><a href="{:U('User/index',array(id=>$vo['postuserid']),'')}" target="_blank">{$vo.postusername}</a></span>
+            </td>
+            <td>
+                <div class="clearfix">
+                    <span class=" text-muted">{$vo.CntText}</span>
+                    <br />
+                    <div class="DiscussContent">
+                        {$vo.content}
+                    </div>
+                    <div>
+                       <if condition="$vo.Cnt gt 1">
+                           <include file="Topicinfo/BBSManager" />
+                       </if>
+                        <div class="text-right text-muted">{$vo.posttime}@Html.GetIP(@bbs.PostIp)</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+
+<php>}</php>
+<div class="clearfix">
+</div>
+<!--回复-->
+
+<include file="Topicinfo/GetQAReply" />

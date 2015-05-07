@@ -1,0 +1,117 @@
+<div class="row">&nbsp;</div>
+<php>if(!IS_POST){</php>
+<form method="post" action="{:U('User/Register','','')}" class="form-horizontal">
+    <div class="panel panel-color panel-blue">
+        <div class="panel-heading">
+            用户注册
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="LoginName" class="col-sm-2 control-label">用户名：</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" id="LoginName" name="LoginName" class="form-control" placeholder="请输入用户名">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="Password" class="col-sm-2 control-label">密码：</label>
+                <div class="col-sm-7">
+                    <input type="Password" id="Password" name="Password" class="form-control" placeholder="请输入密码">
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="ConfirmPassword" class="col-sm-2 control-label">密码确认：</label>
+                <div class="col-sm-7">
+                    <input type="Password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" placeholder="请再次输入密码">
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="RealName" class="col-sm-2 control-label">真实姓名：</label>
+                <div class="col-sm-7">
+                    <input type="text" id="RealName" name="RealName" class="form-control" placeholder="请输入真实姓名">
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="NickName" class="col-sm-2 control-label">昵称：</label>
+                <div class="col-sm-7">
+                    <input type="text" id="NickName" name="NickName" class="form-control" placeholder="请输入昵称">
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="Gender" class="col-sm-2 control-label">性别：</label>
+                <div class="col-sm-7">
+                    {$genderHtml}
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="UserEmail" class="col-sm-2 control-label">Email：</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="linecons-mail"></i>
+                        </span>
+                        <input type="text" id="UserEmail" name="UserEmail" class="form-control" placeholder="请输入Email">
+                    </div>
+
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="UserQuestion" class="col-sm-2 control-label">密码保护问题：</label>
+                <div class="col-sm-7">
+                    <input type="text" id="UserQuestion" name="UserQuestion" class="form-control" placeholder="请输入密码保护问题">
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <label for="UserAnswer" class="col-sm-2 control-label">密码保护问题答案：</label>
+                <div class="col-sm-7">
+                    <input type="text" id="UserAnswer" name="UserAnswer" class="form-control" placeholder="请输入密码保护问题答案">
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+            </div>
+            <div class="form-group-separator"></div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" id="btnLogin" value=" 提交注册 " class="btn btn-info" />
+                    <input type="reset" id="btnReset" value=" 重新填写 " class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<php>}</php>

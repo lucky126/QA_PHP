@@ -1,0 +1,92 @@
+<!--问题-->
+<div id="Question" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 id="TopicTitle" class="topicCaptionText">
+            {$data.getLock}
+            {$data.getTopLevel}
+            {$data.getDigest}
+            {$data.title}</h3>
+    </div>
+    <div class="panel-body">
+        <p class="clearfix text-info">
+            <span class="Questioner">提问者：<a href="{:U('User/index',array(id=>$data['postuserid']),'')}" target="_blank">{$data.postusername}</a></span>
+            <span class="QuestionTime">发帖时间：{$data.posttime|time2Units}</span>
+        </p>
+        <p class="clearfix text-muted">
+            关键词：
+            <foreach name="keywords" item="w">
+                <span class="QuesKeywords">{$w}</span>
+            </foreach>
+        </p>
+        <p class="QuestionDesc">
+            {$bbss['TopicBBS'].content}
+        </p>
+    </div>
+</div>
+<!--正确答案-->
+<if condition="$bbss['HasAnswer'] eq 1">
+    <div id="BestAnswer" class="panel panel-color panel-blue">
+        <div class="panel-heading">
+            <img src="__PUBLIC__/images/Best.gif" />
+            最佳回复</span>
+        </div>
+        <div class="panel-body">
+            {$bbss['Answer'].content}
+            <p class="clearfix text-info">
+            <span class="ReBestAuthorSign">回复者：<a href="{:U('User/index',array(id=>$bbss['Answer']['postuserid']),'')}" target="_blank">{$bbss['Answer'].postusername}</a>
+                回复时间：{$bbss['Answer'].posttime}</span>
+            </p>
+        </div>
+    </div>
+    <!--可以修改正确答案，但是不能取消。取消操作替换为从其他回答中选择正确答案-->
+    <script language="javascript">
+        function LoadEdit() {
+            try {
+                $.ajax({
+                    type: "Get",
+                    url: "{:U('Topicinfo/GetEditAnswer',array(bbsId=>$bbss['Answer']['id']),'')}",
+                    async: false,
+                    success: function (msg) {
+                        $("#EditMyAnswer").empty();
+                        $('#EditMyAnswer').append(msg);
+                        $('#BestAnswer').hide();
+                    }
+                });
+            }
+            catch (e) { }
+        }
+        function Close()
+        {
+            $("#EditMyAnswer").empty();
+            $('#EditMyAnswer').append(" <input type=\"submit\" id=\"EditAnswer\" value=\"修改正确答案\" class=\"btn btn-primary\" onclick=\"LoadEdit()\" />");
+            $('#BestAnswer').show();
+        }
+    </script>
+    <div id="EditMyAnswer">
+        <input type="submit" id="EditAnswer" value="修改正确答案" class="btn btn-primary" onclick="LoadEdit()" />
+    </div>
+
+</if>
+<!--其他答案-->
+<if condition="$bbss['AnswerCnt'] gt 0">
+    <div id="OtherAnswerList" class="panel panel-color panel-info">
+        <div class="panel-heading">
+            回 答（共{$bbss['AnswerCnt']}条）
+        </div>
+        <ul class="list-group">
+            <foreach name="bbss['OtherBBSs']" item="vo">
+                <li class="list-group-item">
+                    <p class="clearfix text-info">
+                        <span class="Questioner">回复者：<a href="{:U('User/index',array(id=>$o['postuserid']),'')}" target="_blank">{$vo.postusername}</a></span>
+                        <span class="QuestionTime">回复时间：{$vo.posttime}</span>
+                    </p>
+                    <p class="QuestionDesc">
+                        {$vo.content}
+                    </p>
+                    <!--帖子管理-->
+                    <include file="Topicinfo/BBSManager" />
+                </li>
+            </foreach>
+        </ul>
+    </div>
+</if>

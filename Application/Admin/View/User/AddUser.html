@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form method="post" action="__URL__/AddUser" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="LoginName" class="col-sm-2 control-label">登录名：</label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa-user"></i>
+                                </span>
+                                <input type="text" id="LoginName" name="LoginName" class="form-control" placeholder="请输入登录名" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="col-sm-2 control-label">登录密码：</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="Password" name="Password" class="form-control" placeholder="请输入登录密码" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="RealName" class="col-sm-2 control-label">真实姓名：</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="RealName" name="RealName" class="form-control" placeholder="请输入真实姓名" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="NickName" class="col-sm-2 control-label">昵称：</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="NickName" name="NickName" class="form-control" placeholder="请输入昵称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserLevel" class="col-sm-2 control-label">用户等级：</label>
+                        <div class="col-sm-10">
+                            {$userLevelHtml}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Gender" class="col-sm-2 control-label">性别：</label>
+                        <div class="col-sm-10">
+                            {$genderHtml}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserEmail" class="col-sm-2 control-label">Email：</label>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="linecons-mail"></i>
+                                </span>
+                                <input type="text" id="UserEmail" name="UserEmail" class="form-control" placeholder="请输入Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="hidden" id="userType" name="userType" value="{$userType}">
+                            <input type="submit" value="  保 存  " class="btn btn-primary" onclick="Save()" />
+                            <input type="button" value="  返 回  " class="btn btn-info" onclick="history.go(-1)" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

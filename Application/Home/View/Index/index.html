@@ -1,0 +1,28 @@
+<include file="Common/topBanner" />
+<div class="row">&nbsp;</div>
+
+<foreach name="parent" item="p">
+    <div class="col-md-12">
+        <div class="panel panel-color panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">{$p.boardname}</h3>
+
+                <div class="panel-options">
+                    <a href="{:U('Board',array('id' => $p['id']),'')}">进入</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <foreach name="p.children" item="c">
+                    <div class="col-md-3">
+                        <h5>
+                            <a href="{:U('Board',array('id' => $c['id']),'')}">{$c.boardname}</a>
+                        </h5>
+                        <div class="text-muted">
+                            主题：{$c.topicnum}，回帖：{$c.postnum}
+                        </div>
+                    </div>
+                </foreach>
+            </div>
+        </div>
+    </div>
+</foreach>

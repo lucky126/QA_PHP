@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <th>{$boardTypeName}名称</th>
+                        <th>父节点</th>
+                        <th>{$boardTypeName}类型</th>
+                        <th>版主</th>
+                        <th>公共版区</th>
+                        <th>主贴数</th>
+                        <th>帖子数</th>
+                        <th>操作</th>
+                    </thead>
+                    <foreach name="list" item="vo" >
+                        <tbody>
+                        <td><a href="{:U('edit',array('id' => $vo['id']),'')}" title="点击编辑版区信息">{$vo.boardname}</a></td>
+                        <td>{$vo.parentBoardName}</td>
+                        <td>{$vo.boardTypeTxt}</td>
+                        <td>{$vo.masterName}</td>
+                        <td>{$vo.ispublic|getYesOrNo}</td>
+                        <td>{$vo.topicnum}</td>
+                        <td>{$vo.postnum}</td>
+                        <td>
+                            <if condition="$vo.depth eq 0 ">
+                                <assign name="subTypeName" value="版区" />
+                                <else />
+                                <assign name="subTypeName" value="分类" />
+                            </if>
+                            <a href="{:U('add',array('parentid' => $vo['id']),'')}" title="新增{$subTypeName}">新增{$subTypeName}</a>
+                            <if condition="$vo.canEdit eq 1">
+                                | <a href="{:U('delete',array('id' => $vo['id']),'')}" title="删除当前版区">删除</a>
+                            </if>
+                            <if condition="$vo.isleaf eq 0">
+                                | <a href="{:U('index',array('parentid' => $vo['id']),'')}" title="点击查看下属{$subTypeName}">进入下一级</a>
+                            </if>
+                        </td>
+                        </tbody>
+                    </foreach>
+                </table>
+                <div>
+                    <if condition="$isRoot eq 0">
+                        <a href="{:U('index',array('parentid' => $pid),'')}" class="btn btn-primary">返回上层</a></td>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

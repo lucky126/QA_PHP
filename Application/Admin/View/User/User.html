@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-2 col-md-offset-10">
+        <if condition="$userType eq 1">
+            <a href="{:U('AddUser',array('usertype' => $userType),'')}" class="btn btn-primary btn-lg">新增管理员</a>
+        </if>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="{:U('Delete')}" method="post">
+                    <table  class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <th>删除</th>
+                        <th>用户名</th>
+                        <th>用户姓名</th>
+                        <th>用户昵称</th>
+                        <th>性别</th>
+                        <th>用户类型</th>
+                        <th>添加时间</th>
+                        <th>最后登录时间</th>
+                        <th>操作</th>
+                    </thead>
+                    <tbody>
+                        <foreach name="list" item="vo" >
+                            <tr>
+                                <td><input type="checkbox" id="del" name="id_{$vo['id']}"></td>
+                                <td><a href="{:U('ShowUser',array('id' => $vo['id'],'usertype' => $userType),'')}", title="点击查看用户信息">{$vo.loginname}</a></td>
+                                <td>{$vo.realname}</td>
+                                <td>{$vo.nickname}</td>
+                                <td>{$vo.GenderTxt}</td>
+                                <td>{$vo.UserLevelTxt}</td>
+                                <td>{$vo.addtime}</td>
+                                <td>{$vo.lastlogintime}</td>
+                                <td><a href="{:U('EditUser',array('id' => $vo['id'],'usertype' => $userType),'')}", title="点击编辑用户信息">编辑</a></td>
+                            </tr>
+                        </foreach>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="9" style="padding-left: 20px;">
+                                <input type="checkbox" id="AllCheck" name="AllCheck" onclick = "AllSelect()"> 全选
+                                <input type="submit" value=" 删 除 " onclick="return CheckDel();" />
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <input type="hidden" id="userType" name="userType" value="{$userType}">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('input[id="del"]').each(function () {
+            $(this).prop('checked', false)
+        });
+        $('input[id="del"]').bind("click", function () {
+            if ($(this).prop('checked') == false) {
+                $('#AllCheck').prop('checked', false);
+            }
+        });
+    });
+    function AllSelect() {
+        $('input[id="del"]').each(function () {
+            $(this).prop('checked', $('#AllCheck').prop('checked'))
+        });
+    }
+    function CheckDel() {
+        var hasSelect = false;
+        $('input[id="del"]').each(function () {
+            if ($(this).prop('checked'))
+                hasSelect = true;
+        });
+
+        if (!hasSelect) {
+            alert("请选择需要删除的用户");
+            return false;
+        }
+        else {
+            return confirm("你确认要删除所选用户么？");
+        }
+    }
+</script>

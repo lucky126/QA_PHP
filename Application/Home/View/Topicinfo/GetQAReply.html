@@ -1,0 +1,24 @@
+<php>if($reply != NULL){</php>
+<form action="{:U('Topicinfo/'.$reply['ActionName'],'','')}" method="post" class="form-horizontal">
+<div class="panel panel-color panel-blue">
+    <div class="panel-heading">
+        {$reply.Title}
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <textarea id="ReplyContent" name="ReplyContent" rows="6" cols="20" class="form-control">{$reply.ReplyContent}</textarea>
+        </li>
+
+        <li class="list-group-item text-right">
+            <input type="hidden" id="TopicId" name="TopicId" value="{$reply.TopicId}">
+            <input type="hidden" id="BoardId" name="BoardId" value="{$reply.BoardId}">
+            <input type="hidden" id="BBSId" name="BBSId" value="{$reply.BBSId}">
+            <input id="btnReply" type="submit" value="{$reply.SubmitButtonValue}" name="btnReply" class="btn btn-info" />
+           <if condition="$reply.IsShowCloseButton eq 1">
+            <input id="btnClose" type="button" value=" 关 闭 " name="btnClose" onclick="{$reply.CloseJSFunction}" class="btn btn-default" />
+           </if>
+        </li>
+    </ul>
+</div>
+</form>
+<php>}</php>

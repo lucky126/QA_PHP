@@ -1,0 +1,17 @@
+<foreach name="menu" item="mo" key="mk">
+    <li {$mo['menu_class']}>
+        <a href="{:U($mk.'/Index','','')}">
+            <i class="linecons-{$mo[1]}"></i>
+            <span class="title">{$mo[0]}</span>
+        </a>
+        <ul>
+            <foreach name="mo['sub']" item="smo">
+            <li {$smo['sub_class']}>
+                <a href="{:U($smo['url'],'','')}">
+                    <span class="title">{$smo['subname']}</span>
+                </a>
+            </li>
+            </foreach>
+        </ul>
+    </li>
+</foreach>

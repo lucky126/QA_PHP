@@ -1,0 +1,55 @@
+<include file="Common/topBanner" />
+<!--版区信息-->
+<div class="row">
+    <include file="Common/Nav" />
+    <!--版主列表-->
+    <div class="col-lg-4 breadcrumb ">
+        <foreach name="boardmaster" item="m">
+            <a href="{:U('User/index',array('id'=>$m),'')}">{$m}</a>
+        </foreach>
+
+    </div>
+</div>
+<!--子版区-->
+<if condition="$data.isleaf eq 0">
+    <div class="panel panel-color panel-info">
+        <if condition="$data.depth eq 0">
+            <div class="panel-heading">
+                <span class="ParentBoardName">子版区</span>
+            </div>
+        </if>
+        <div class="panel-body">
+            <foreach name="data.children" item="c">
+                <div class="col-md-3">
+                    <h5>
+                        <a href="{:U('Board',array('id' => $c['id']),'')}">{$c.boardname}</a>
+                    </h5>
+                    <div class="text-muted">
+                        主题：{$c.topicnum}，回帖：{$c.postnum}
+                    </div>
+                </div>
+            </foreach>
+        </div>
+    </div>
+</if>
+<!--帖子信息-->
+<div id="listBody">
+    <div class="clearfix">
+        <if condition="$data.boardtype eq 1">
+            {//QA 启用标签}
+            <include file="Common/QATypeNav" />
+            <div class="panel panel-default">
+                <div class="table-responsive clearfix">
+                    <include file="Topic/QAList" />
+                </div>
+            </div>
+        <else/>
+            {//论坛不启用标签}
+            <div class="panel panel-default">
+                <div class="table-responsive clearfix">
+                    <include file="Topic/DiscussList" />
+                </div>
+            </div>
+        </if>
+    </div>
+</div>

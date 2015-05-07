@@ -1,0 +1,35 @@
+<header class="navbar navbar-inverse " role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">互动交流系统--PHP版</a>
+        </div>
+        <nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                <if condition="session('?User')">
+                    <li>
+                        <a href="" class="iconText,ui-btn-active">{:session('User')['NickName']}</a>
+                    </li>
+                </if>
+                <li>
+                    <a href="{:U('Index/index')}" class="iconText,ui-btn-active">首页</a>
+                </li>
+                <if condition="session('?User')">
+                    <li>
+                        <a href="" class="iconText,ui-btn-active">控制面板</a>
+                    </li>
+                    <li>
+                        <a href="{:U('User/Logout','','')}" class="iconText,ui-btn-active">注销</a>
+                    </li>
+                    <else/>
+                    <li>
+                        <a href="{:U('User/Register','','')}" class="iconText,ui-btn-active">注册</a>
+                    </li>
+                    <li>
+                        <a href="{:U('User/Login','','')}" class="iconText,ui-btn-active">登录</a>
+                    </li>
+                    </if>
+            </ul>
+        </nav>
+    </div>
+</header>

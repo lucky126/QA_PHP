@@ -1,0 +1,42 @@
+<table cellpadding="4" cellspacing="1" border="0" class="table table-model-2 table-hover" id="QAList">
+    <th width="50%">
+        标题
+    </th>
+    <th width="10%">
+        发起人
+    </th>
+    <th width="10%">
+        回复/点击
+    </th>
+    <th width="10%">
+        状态
+    </th>
+    <th width="20%">
+        发起时间
+    </th>
+    <tbody>
+    <foreach name="topics" item="p">
+        <tr>
+            <td>
+                {$p.getLock}
+                {$p.getTopLevel}
+                {$p.getDigest}
+                <a href="{:U('Topic/index',array(id => $p['id'],bid => $p['boardid']),'')}"  target="_blank">{$p.title}</a>
+            </td>
+            <td class="textCenter">
+                <a href="{:U('User/index',array(id => $p['postuserid']),'')}" target="_blank">{$p.postusername}</a>
+            </td>
+            <td class="textCenter">
+                {$p.child}/{$p.hits}
+            </td>
+            <td class="textCenter">
+                {$p.getTopicFinish}
+            </td>
+            <td class="textCenter">
+                {$p.posttime}
+            </td>
+        </tr>
+</foreach>
+</tbody>
+</table>
+<div class="row">{$page}</div>
